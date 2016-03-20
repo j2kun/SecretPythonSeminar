@@ -1,0 +1,164 @@
+<html>
+<head><title>Lab 4</title>
+<link rel="stylesheet" type="text/css" href="../lab-style.css">
+</head>
+<body>
+
+<div style="width: 700px; margin-left: 100px;">
+   <h1> Lab 4 </h1>
+   <h2> Overview </h2> 
+
+   <p>In this lab we will learn to work with dictionaries, sets, and files, and
+put them together to write functions that manipulate a gradebook according to a
+fixed set of rules. To describe a dictionary type, I will use the notation
+<span>{a:b}</span> where <span>a</span> and <span>b</span> refer to arbitrary
+types. When I want to be generic and not commit to a choice of types, I will
+use "key" for <span>a</span> and "value" for <span>b</span>.</p>
+
+   <p>The notation I'll use for the type is a set containing values of a
+certain type is <span>set(a)</span>.</p>
+
+   <p>All of the work in this lab will be contained in a single file called
+<span>lab4.py</span>.</p>
+
+   <h2>Warm up</h2>
+   <h3>subdict: {key: value}, string -> {key: value}</h3>
+   <p>Define a function which accepts as input a dictionary and a string
+<span>k</span>, and produces as output a new dictionary that contains all the
+entries of the input dictionary whose keys contain <span>k</span> as a
+substring.</p>
+
+   <h3>dictSum: {key: value} -> float</h3>
+   <p>Define a function which accepts as input a dictionary and values which
+can be converted to floats using <span>float()</span>, and produces as output a
+number which is the sum of all the values of the dictionary (interpreted as
+floats).</p>
+
+
+
+   <h2>Working with the gradebook</h2>
+   <p>Before we can manipulate a gradebook, we have to decide how we're going
+to represent the gradebook inside of python. There are many good choices, and
+we will pick one of them arbitrarily so that we can practice using
+dictionaries.</p>
+
+   <p>From now on, a <span>gradebook</span> will refer to the type
+<span>[{string: string}]</span>, that is, a list of <span>{string:
+string}</span> dictionaries. Each dictionary in the list corresponds to a
+student, and each entry in the dictionary corresponds to some information about
+a student, such as an id number, an email, or a score on a particular
+assignment. I will call <span>record</span> the type of an individual
+entry.</p>
+
+   <h3>loadGrades: string -> gradebook</h3>
+
+   <p>Write a function that takes as input a string containing a filename,
+reads in the data in that file, and produces as output a gradebook
+corresponding to the contents of that file. The file will contain as its first
+line a list of keys for each column, and each subsequent line corresponds to
+the values for a particular student.</p>
+
+   <p>An example file might contain the following:</p>
+
+   <pre>
+      id,email,hw1,exam1
+      88,blah@blah.com,1,3
+      12,foo@bar.baz,9,99
+   </pre>
+
+   <p>Before implementing this function, you should write down what the output
+gradebook should look like (as a python type) and turn that into a test case.</p>
+   <p>
+      As a hint, you will want to use python's built-in <span>split</span> function for strings. Look up a tutorial online about how to use this function.
+   </p>
+
+
+   <h3>studentGrade: record -> string</h3>
+   <p>Define a function which accepts as input a record and produces as output
+a string representing an aggregate grade. Here are assumptions you get to make
+and rules you must follow: </p>
+
+   <ul>
+      <li>Some key-value pairs in the input are irrelevant. The important ones
+are those whose keys contain as a substring either the string "hw" or the
+string "exam".</li>
+      <li>The "hw" keys have values which are integers between 0 and 10
+(inclusive), i.e. every homework assignment is worth 10 points.</li>
+      <li>The "exam" keys are similar to the homework keys, except they are out
+of 100 points.</li>
+      <li>The function should output an aggregate grade in which "hw" entries
+in total are worth 20% of the grade and "exam" entries in total are worth 80%
+of the grade. The output should be expressed as a float between 0 and 1.</li>
+      <li>To avoid strange floating point comparisons, the output should be
+expressed as a string with 2 decimal digits of precision. I.e. use "%.2f" as
+your format string.</li>
+      <li>You may assume there is at least one entry in a record for 
+"hw" and at least one entry for "exam".</li>
+   </ul>
+
+
+   <h3>allGrades: gradebook -> {string:string}</h3>
+   <p>Define a function which accepts as input a gradebook and produces as output
+a dictionary whose keys are student ids and whose values are grades (in
+2-digit-precision string form). </p>
+
+
+   <h3>atRisk: gradebook, float -> set(string)</h3>
+   <p>Define a function which accepts as input a gradebook and a threshold (a
+float between 0 and 1), and produces as output the set of student ids of those
+students whose grades are each less than the given threshold.</p>
+
+   <h3>processFailing: string, string -> None</h3>
+   <p>Define a function which accepts as input two strings and behaves as
+follows. The first string is a filename for a gradebook, which this function
+loads into python. The second string is the filename for a new file which this
+function should create, and when this function is finished the contents of this
+new file should contain the emails and grades of each student whose grade is
+less than 0.5 (after rounding), one per line, separated by a single space, with
+the grade rounded as we've done previously.</p>
+
+   <p>So, for example, if Jim Bob is has an aggregate grade of 0.4111111 and his
+email is <span>jimbob@alabama.edu</span>, then the new file should contain a
+line:</p>
+
+   <pre>
+      jimbob@alabama.edu 0.41
+   </pre>
+
+   <p>The file should be sorted by student id. This requires a new special
+function that python has built in. If you are currently trying to loop over a
+list, set, or dictionary, like:</p>
+
+   <pre>
+      for item in loopyThing:
+         ...
+   </pre>
+
+   <p>And instead you want to iterate over <span>loopyThing</span> in sorted
+order, you can do:</p>
+
+   <pre>
+      for item in sorted(loopyThing):
+         ...
+   </pre>
+
+   <p>The <span>sorted</span> function knows how to sort anything that can be
+iterated over that we have learned about. This is an example of duck-typing at
+it's finest. If you actually want to produce a list that is the sorted order of
+<span>loopyThing</span>, then you can do this with
+<span>list(sorted(loopyThing))</span>.</p>
+
+
+<h2> Submission </h2>
+   <p>In order to submit, make sure your program is in a single file named
+<span>lab4.py</span> and that your terminal is in the same directory as the
+file (when you run the <span>ls</span> program you should see the file listed).
+Then run the following terminal command:</p>
+
+   <pre>
+      $ submit lab4 lab4.py
+   </pre>
+
+</div>
+</body>
+</html>

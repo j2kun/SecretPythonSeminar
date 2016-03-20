@@ -1,0 +1,266 @@
+<html>
+<head><title>Lab 2</title>
+<link rel="stylesheet" type="text/css" href="../lab-style.css">
+</head>
+<body>
+<div style="width: 700px; margin-left: 100px;">
+   <h1> Lab 2 </h1>
+   <h2> Overview </h2> 
+   <p>In this lab we will practice if statements, for loops, lists, and learn a
+bit more about strings. </p>
+
+   <h2>If/Elif/Else Statments, and More About Strings</h2>
+
+   <p>All of the functions in this section should be defined within a file
+called <span>ifelse.py</span>.</p> 
+
+   <h3>absoluteValue: number -&gt; number</h3>
+   <p>Define a function called <span>absoluteValue</span> which accepts as
+input a single number and returns as output the absolute value of that number.
+Do it without using the built-in <span>abs</span> function.</p>
+
+   <h3>isLeapYear: int -&gt; boolean</h3>
+   <p>Define a function called <span>isLeapYear</span> which accepts as input
+an integer representing a year and returns True if the year is a leap year and
+False otherwise.</p>
+
+   <p>A leap year is determined by the following rules: if a year is divisible
+by 400, it is a leap year; if a year is divisible by 100 but not 400, it is not
+a leap year; if a year is divisible by 4 and not 100, then it is a leap year.</p>  
+
+   <h3>singlesAmountTaxed: float -&gt; float</h3>
+   <p>Define a function called <span>singlesAmountTaxed</span> which accepts as input
+a float representing a yearly salary (in dollars) and returns as output the
+amount of this money paid in taxes by a single adult.</p>
+   
+   <p>For your reference, the 2013 US income tax brackets we'll use are given
+below (taken as a snapshot from Wikipedia on Friday, Jan 25 2013 at 8:49 PM CST).</p>
+
+   <img src='.img/tax.png' />
+
+   
+   <h3>frogToPrince: string -&gt; string</h3>
+   <p>In this exercise and the next we will learn more about strings. Strings
+have a lot of nice operations on them. For instance, you can determine if one
+string is a <em>sub</em>-string of another by using the <span>in</span>
+operation.  Specifically, <span>string1 in string2</span> is True if and only
+if a copy of <span>string1</span> can be found (contiguously) inside of
+<span>string2</span>. Note that this adds a new expression to our list of
+expressions: <span>expr in expr</span> (we will see other places where 'in' can
+be used later).</p>
+
+   <p>Define a function called <span>frogToPrince</span> which accepts as input
+a string and behaves as follows. If the string 'frog' is a substring of the
+input string, return a new string with all instances of 'frog' replaced by the
+word 'prince'. Note the capitalization. If the string 'frog' is not present as
+a substring, this function returns the string 'My kingdom for a frog!'.</p>
+
+   <p>Of course, replacing instances of 'frog' is hard with our current
+knowledge, but it turns out there is a built-in string function that will do it
+for us! This operation takes a new notataion we haven't discussed yet, but for
+now you should accept it as voodoo magic.</p>
+
+   <p>This function is called <span>replace</span> and it works as in the
+following example run in the REPL:</p>
+
+   <pre>
+   >>> 'a banana bat? a banana boat?'.replace('a', 'x')
+   'x bxnxnx bxt? x bxnxnx boxt?'
+   </pre> 
+
+   <p>That is, there is that little period sitting between the string we're
+operating on (or a variable referring to a string) and the function name
+"replace". The replace function itself accepts as input two strings: the
+substring to replace and the substring to replace it with. Then it returns a
+copy of the new string with the appropriate replacements made.</p>
+
+   <p>The expression form we're talking about here is
+<span>expr.functionname(arguments)</span>, where the expr can be any expression
+that evaluates to a string, and "functionname" is any function which is
+paricular to strings. When we talk about "functions particular to strings," we
+call them <em>string methods</em>. <a href='http://docs.python.org/2/library/stdtypes.html#string-methods'>Here is a
+list of all string methods</a>.
+   </p>
+
+   <h3>domainName: string, -&gt; string</h3>
+   <p>Define a function called <span>domainName</span> which accepts as input a
+single string and returns a string as follows. If the string contains the
+symbol '@', we assume it is an email address (of the form
+'user@something.something'). In this case, return the part of the string which
+comes after the '@' symbol (the 'something.something' part). If the input
+string does not contain a '@', return the empty string.</p>
+
+   <p>To do this, you will need to know two more things about strings. The
+first is that you can extract a piece of a string using a new notation called
+<em>string slicing</em>.</p>
+
+   <p>First, note that we can extract the character at a specific location in a
+string using the square bracket notation: expr[int]. The following example
+shows how this works:</p>
+
+   <pre>
+   >>> 'abcdefg'[0]
+   'a'
+   >>> 'abcdefg'[1]
+   'b'
+   >>> 'abcdefg'[2]
+   'c'
+   >>> myString = 'hello my name is Jeremy'
+   >>> myString[7]
+   'y'
+   </pre> 
+
+   <p>Specifically, the first character in the string is at location (the
+proper term is <em>index</em>) zero, and the second character is at index 1,
+etc. The square bracket notation, however, does so much more! Observe list
+slicing in action:</p>
+
+   <pre>
+   >>> 'abcdefg'[0:4]
+   'abcd'
+   >>> 'abcdefg'[2:4]
+   'cd'
+   >>> 'abcdefg'[2:]
+   'cdefg'
+   >>> 'abcdefg'[:3]
+   'abc'
+   </pre> 
+   
+   <p>That is, by adding in the colon and using two integers, we can extract a
+particular substring from a given string. Leaving out the first integer
+defaults to start the slice at the beginning of the string, and leaving out the
+second integer defaults to ending the slice at the end of the string.</p>
+
+   <p>In our case, once we find out where the '@' is located in a string
+containing an email address, we can use this technique to extract the remainder
+of the string and return it to the caller of the function.</p>
+
+   <p>Conveniently, there is another string method called "find" which tells us
+the first index of a substring within a larger string. The syntax is very
+similar to the replace method we learned about earlier:</p>
+
+   <pre>
+   >>> 'abcdefg'.find('c')
+   2
+   </pre>
+
+   <p>With the find method and string slicing (and the other things we've
+learned so far) you should have enough to implement this function.</p>
+
+
+   <h2>For Loops and the Collatz Sequence</h2>
+
+   <p>This part of the lab will focus on exploring the Collatz conjecture. A
+Collatz sequence is a sequence of numbers where each number is acquired by
+applying the following rules:</p>
+
+   <ul>
+      <li>If the previous number is even, divide it by two to get the next
+number.</li>
+      <li>If the previous number is odd, multiply it by three and add one to
+get the next number.</li> 
+   </ul>
+
+   <p>The first number in the sequence is an arbitrarily chosen positive
+integer, and it is an interesting question to ask for which starting numbers
+the resulting Collatz sequence will hit the number 1.  In fact, the Collatz
+conjecture is the assertion (without proof) that this sequence will
+<em>always</em> reach 1, no matter which positive number you start with. </p>
+
+   <p>For example, starting at 5 gives the sequence: 5, 16, 8, 4, 2, 1.</p>
+
+   <p>The <em>length</em> of a Collatz sequence is defined to be the number of
+integers in the sequence (including the starting number and 1). So the Collatz
+sequence starting at 5 has a length of 6.</p>
+
+   <p>In the discussion we learned about lists, and in our function signatures
+we will denote a list whose elements are all of type <span>T</span> by
+<span>[T]</span>. So for example a list of integers has type written as 
+<span>[int]</span>.</p>
+
+   <p><strong>Note:</strong> All of the work in this lab will be contained in a
+single file called <span>collatz.py</span></p> 
+
+   <h3>collatzify: int -> int</h3>
+   <p>Define a function called collatzify which accepts as input a single
+integer and produces as output the next number in the Collatz sequence, as
+defined by the rules above.</p>
+
+   <h3>collatzSequence: int -> [int]</h3>
+   <p>Define a function which accepts as input an integer representing the
+first element of a Collatz sequence, and returns as output a list containing
+the entries of the Collatz sequence beginning at that number. For example,
+<span>collatzSequence(5)</span> should result in the list
+<span>[5,16,8,4,2,1]</span>.</p>
+
+   <h3>frequency: int, [int] -> int</h3>
+   <p>Define a function called frequency which accepts as input an integer (say,
+n) and a list (say, L), and returns as output the number of times n occurs in L.</p>
+
+   <h3>histogram: [int] -> [int]</h3>
+   <p>Define a function called histogram which accepts as input a list of
+nonnegative integers and produces as output a list representing a simplified
+"histogram" of the input list. Specifically, the output list has as many
+entries as the largest integer occuring in the input list (plus one, because
+our histograms will always include 0), and the i-th entry contains the
+frequency of the number i in the input list. In other words, i will range
+between zero and the largest number in the input list (inclusive).</p>
+
+   <p>An example should clarify: <span>histogram([1,1,5,3,2,2,2,6])</span>
+results in the list <span>[0,2,3,1,0,1,1]</span> because 0 does not occur in
+the input list, 1 occurs twice, 2 occurs three times, etc.</p>
+
+   <p>Python has a built-in function called <span>max</span> which accepts as
+input a list and returns as output the largest element of the list.</p>
+
+   <h3>collatzHistogram: int -> [int]</h3>
+   <p>Define a function called <span>collatzHistogram</span> which accepts as
+input a number (say, n) and produces as output a histogram of the
+<em>lengths</em> of all of the Collatz sequences whose first terms range
+between 1 and n inclusive (hint: your life will be terrible if you don't use
+the other functions defined earlier). </p>
+
+   <p>In case I forgot to mention this, the <span>range</span> function accepts
+as input two integers a, b and returns as output a list of all the integers
+from a to b exclusive (so b is excluded). e.g. <span>range(0,5) ==
+[0,1,2,3,4]</span>. Actually this is only <em>almost</em> true. If you want to
+iterate over a range of numbers, you can do it with, e.g., <span>for i in
+range(0,10): ...</span>. If you actually want to use the output of range as a
+list you have to convert it to a list using <span>list(range(0,10))</span>.</p>
+
+   <p>The natural next step in this lab would be to graphically plot the
+histogram so we can be wowed by the magical distributions that arise. But
+because we aren't ready for graphics yet, I've provided a function which plots
+a histogram in the terminal.</p>
+
+   <pre>
+   def printHist(aHistogram):
+      import math
+      theMax = max(aHistogram)
+      numDigits = math.ceil(math.log10(len(aHistogram)))
+      formatter = "%" + str(numDigits) + "d "
+
+      for i, count in enumerate(aHistogram):
+         print((formatter % i) + ("#" * int(round(10.0 * count / theMax))))
+   </pre>
+
+   <p>One would use it by calling, e.g.,
+<span>printHist(collatzHistogram(1000))</span>. The printHist function is
+purely for your amusement; including it or not including it will not affect
+your grade (but why not enjoy your accomplishment by making some pretty
+pictures?). </p>
+
+
+<h2> Submission </h2> 
+
+<p>To submit on the server, run the following terminal command when your
+present working directory contains both <span>ifelse.py</span> and
+<span>collatz.py</span>:</p>
+
+   <pre>
+      $ submit lab2 ifelse.py collatz.py
+   </pre>
+
+</div>
+</body>
+</html>

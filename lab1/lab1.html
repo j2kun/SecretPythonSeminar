@@ -1,0 +1,245 @@
+<html>
+<head><title>Lab 1</title>
+<link rel="stylesheet" type="text/css" href=".lab-style.css">
+</head>
+<body>
+
+<div style="width: 700px; margin-left: 100px;">
+   <h1> Lab 1 </h1>
+   <h2> Overview </h2> 
+   <p>In this lab we will practice the basics of functions, arithmetic, and
+variables, and learn to work on the terminal. All of our work this lab will be
+done within a single file called <span>lab1.py</span>.</p>
+
+   <p>From now on, when I describe the behavior of a function I will use the
+notation <span>functionName: type -&gt; type</span> to specify what the
+appropriate input type and output type of the function should be. This is
+called a function's <em>type signature</em>. If I say that a function has the
+signature <span>f: number -&gt; number</span>, then it is called "f", it
+accepts as input a single number, and produces as output a single number. </p>
+
+   <p>While developing your code, it's important to test it to make sure it
+works properly. One simple way to do this (and we will learn more complex ways
+to do this) is to run your file through the python REPL. If your file is called
+<span>lab1.py</span>, then you would do this as follows: </p>
+   <pre>
+      $ python -i lab1.py
+   </pre>
+
+   <p>This does the same thing as clicking the "Run module" button in IDLE;
+it first runs your program, and then gives you access to all of the functions
+and variables you defined in the REPL. You can proceed to test your function on
+various inputs and outputs there. When you're done, typing Ctrl+D exits the
+REPL and returns to the terminal.</p>
+
+   <p>All of the following functions should be defined within a file called
+<span>lab1.py</span></p> 
+
+   <h2>Single-argument functions</h2>
+
+   <h3>square: number -&gt; number</h3>
+   <p>Define a function called <span>square</span> which accepts as input a
+single number and returns as output the square of that number. </p>
+
+   <h3>greet: string -&gt; string</h3>
+   <p>Define a function called <span>greet</span> which accepts as input a
+string (containing a name) and returns a <em>new</em> string containing "Hello,
+" followed by whatever the name is.</p>
+
+   <p>In order to accomplish this, we need to know more about strings. The
+operation we're describing is called <em>concatenation,</em> and it is denoted
+by the + symbol. That is, the expression <span>"a" + "b"</span> evaluates to
+<span>"ab"</span>. Whenever you encounter a new feature in Python, I highly
+reccommend you experiment with it in the REPL before using it in your programs.
+</p>  
+
+   <h3>triangleArea: number -&gt; number</h3>
+   <p>Define a function called <span>triangleArea</span> which accepts as input
+a number representing the length of the base of a triangle. We will fix the
+height of this triangle to be 8. The function <span>triangleArea</span> should
+return the area of this triangle. </p>
+
+   <h2>Multiple-argument functions</h2>
+   <p>In this section we will learn more about function arguments. In
+particular, when you define a function you may give any number of arguments,
+including zero. Here are some simple examples of functions with varying numbers
+of arguments. </p>
+
+   <pre>
+      # zero arguments
+      def seven():
+         return 7
+
+      # three arguments
+      def sumOfThree(x, y, z):
+         return x + y + z
+
+      # four arguments:
+      def hypercubeVolume(l1, l2, l3, l4):
+         return l1 * l2 * l3 * l4
+   </pre>
+
+   <p>In particular, an <em>argument list</em> is a new kind of language form
+that has the following syntax:</p>
+   <ul>
+      <li>An argument list may be empty, denoted by not typing anything</li>
+      <li>If an argument list is nonempty, then it is a comma-delimited list of
+variable names</li>
+   </ul>
+
+   <p>The semantics of argument lists is that they are <em>ordered</em>. That is,
+the order in which you specify argument values when you call a function is the same as
+how they are assigned to the list of argument variable names. Here is an
+example:</p>
+
+   <pre>
+      def printThree(aString, anotherString, aThirdString):
+         print aString
+         print anotherString
+         print aThirdString
+
+      printThree("a", "b", "c")
+      printThree("b", "c", "z")
+   </pre>
+
+   <p>In the first function call, the strings "a", "b", "c" are printed out in
+that order. That is, the variable <span>aString</span> refers to the string
+<span>"a"</span> in the first function call, <span>anotherString</span> to
+<span>"b"</span> and <span>aThirdString</span> to <span>"c"</span>. In the
+second function call, however, the variables refer to different values. Be sure
+you can identify which variables correspond to which values.</p>
+
+   <p>As a minor note, our type signatures will change to allow for multiple
+variables. That is, as you can see in the next heading below, commas will
+delimit the types of mulitple input arguments, so the example below is a
+function which accepts as input <em>three</em> numbers and returns a number.
+</p>
+ 
+   <h3>discriminant: number, number, number -&gt; number</h3>
+   <p>Define a function called <span>discriminant</span> which accepts as input
+three numbers representing the coefficients of a quadratic polynomial, and
+outputs the discriminant. In particular, the first argument should be the
+leading coefficient (the coefficient of the squared term), the second argument
+should be the coefficient of the linear term, and the third argument should be
+the constant term.</p>
+
+   <p>You should know what the discriminant of a quadratic polynomial is by
+heart, but if you don't you may look it up.</p> 
+
+<h3>prodOfQuadraticSolutions: number, number, number -&gt; number</h3>
+   <p>Define a function called <span>prodOfQuadraticSolutions</span> which accepts
+as input the coefficients of a quadratic polynomial (in the same order as the
+previous exercise) and returns as output the product of the two solutions. You
+may assume the solutions are both real, and the grading robot will only test
+quadratic polynomials with two real roots. </p>
+
+   <p>Note that this function uses the discriminant formula twice. I recommend
+you use the discriminant function from the previous exercise in this exercise
+(that is, call the <span>discriminant</span> function from within the body of
+this function), and save its output to a variable for later use. </p>
+
+   <p>Note that this function also uses square roots. To compute the square
+root of a numerical expression in Python, you may use the following
+expression:</p> 
+
+   <pre>
+      expr ** 0.5
+   </pre>
+
+   <p>That is, two asterisks denote exponentiation, and the syntax is
+<span>expr ** expr</span></p>
+
+
+<h3>isMultipleOfPi: number, number -&gt; boolean</h3>
+   <p>Define a function called <span>isMultipleOfPi</span> which accepts as input
+a number representing an angle X in radians and a decimal E representing an error
+tolerance, and produces as output a boolean which is True if and only if X is
+within E of an integer multiple of pi.</p>
+
+   <p>For this we need two new tools. The first is access to python's internal
+definition of pi. For this we will learn to <em>import a module</em> into our
+Python program. Don't worry too much about the syntax of importing just yet,
+but to do this you add the following on a line by itself at the top of your
+python file:
+   </p>
+
+   <pre>
+      import math 
+   </pre>
+
+   <p>Now you can access certain special functions and variables defined in the
+math module from your python program. For example, to get the number pi you use
+the expression <span>math.pi</span>.
+
+   <pre>
+&gt;&gt;&gt; import math
+&gt;&gt;&gt; math.pi
+3.141592653589793
+   </pre>
+
+   <p>The second tool we need is the ability to turn a decimal number into an
+integer number. Python has a built in function called <span>int()</span> which
+outputs the largest integer (in absolute value) which is less (in absolute
+value) than the given number.  So <span>int(7.5) = 7</span> and <span>int(-9.3)
+= -9</span>. Another way to do this is to use the <span>math.floor()</span>
+function which operates how you expect it to in math.
+   </p>
+
+<h3>trigProblem: number -&gt; string</h3>
+   <p>Define a function called <span>trigProblem</span> which accepts as input
+a number representing an angle, and produces as output a string of the form
+"Solve the equation $\tan(2 \theta) = Q$ for $\theta$.", where Q is the tangent
+of the input angle. This function should have two special behaviors:
+<ol>
+<li>If the input angle is not in the domain of tangent (specifically, within
+0.001 of a value not in the domain of tangent), then the function should
+instead return a problem of the form "Determine whether Q is in the domain of
+the function $f(\theta) = \tan(2 \theta)$."
+</li> 
+<li>The value of Q should be expressed as a decimal with three digits of
+precision.</li>
+</ol>
+</p>
+
+<p>You can learn how to compute a tangent by looking up the name of the
+function in the Python documentation for the <a
+href="https://docs.python.org/2/library/math.html">math library</a></p>
+
+<p>We also need to know how to put a number into a string in a pretty way. The
+term for this in python is "string formatting," and a common way to do string
+formatting is with the <span>%</span> operator. Here are some examples:</p>
+
+<pre>
+&gt;&gt;&gt; "I am %d years old!" % 26
+'I am 26 years old!'
+&gt;&gt;&gt; "This girl is %f meters tall" % (1/3)
+'This girl is 0.333333 meters tall'
+&gt;&gt;&gt; "This girl is %.3f meters tall" % (2/3)
+'This girl is 0.667 meters tall'
+</pre>
+
+<p>Specifically, <span>%d</span> is used to convert integers to strings, and
+<span>%f</span> is for decimals. To specify how much precision should come
+after the decimal point use <span>%.nf</span> where <span>n</span> is your
+desired precision.</p>
+
+<h2> Submission </h2>
+   <p>In order to submit, make sure your program is in a single file named
+<span>lab1.py</span> and that your terminal is in the same directory as the
+file (when you run the <span>ls</span> program you should see the file listed).
+Then run the following terminal command:</p>
+
+   <pre>
+      $ submit lab1 lab1.py
+   </pre>
+
+   <p>Just to clarify, the <span>$</span> represents your terminal prompt, so
+you shouldn't type that part (it's just there to say that this is a terminal
+command). The name of the program is <span>submit</span>, the first argument is
+the string <span>lab1</span>, which is the name of the lab, and the second
+argument, <span>lab1.py</span>, is the location of the file you want to submit.
+Note that it must be named lab1.py or my grading robot won't grade it.</p>
+
+</div>
+</body>
+</html>

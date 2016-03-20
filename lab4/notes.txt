@@ -1,0 +1,160 @@
+topics:
+
+sets
+dictionaries
+file I/O
+
+
+additional topics:
+
+tuples and mutability
+duck typing
+multiple return arguments, tuple variable assignment
+
+
+In vim command mode:
+
+zz moves screen so cursor is in the middle
+zt ditto but for the top
+zb ditto but for the bottom
+
+A set is a new type for unordered sets of things.
+No duplicates
+
+Before we had list.append(7)
+Turns out this is slow!
+
+If you don't care about order, sets are much faster
+Fast to add new elements, delete existing elements, and check to see if an element is in the set. 
+
+creating new sets: set()
+checking for membership: 3 in mySet evaluates to a boolean
+mySet.add() adds a new element (same behavior as list.append)
+mySet.remove() removes an existing element
+iterating over sets is identical to iterating over lists, but you don't get to control the order
+
+| is union
+& is intersection
+there are other functions too (see the python set documentation for a list of functions)
+
+
+dictionaries
+
+a dictionary is kind of like a list whose indices are whatever you want
+
+D['Jeremy'] 
+
+It's an association between 'keys' and 'values'
+
+Like sets, dictionaries have no ordering, and are very fast to add, remove, and check membership
+
+zipCode['Daniel']
+
+Creating a new dict as an expression: {key1: value1, key2: value2, ...}
+
+Adding a new key-value pair to an existing dict: 
+
+   myDict[newKey] = newValue
+
+updating the value for an existing key: 
+
+   myDict[existingKey] = newValue 
+
+remove a key-value pair for a given key:
+
+   del myDict[theKey]
+
+accessing an existing key:
+
+   myDict[theKey]
+
+checking to see if a key is already in a dictionary:
+
+   theKey in myDict
+
+can create dictionaries with a list comprehension whose entries are pairs
+
+   dict([(i, i*i) for i in range(10,20)])
+
+
+iterating over a dict by itself iterates only over the keys
+
+   for key in theDict:
+      print(key)
+
+
+iterating over theDict.items() produces a list of tuples of size 2, corresponding to the key-value pairs.
+
+   for key,value in theDict.items():
+      ...
+
+can also iterate over theDict.values() and theDict.keys()
+
+
+tuples are immutable, and hence may be keys of a dictionary
+
+multiple return values from a function
+
+   def f(x):
+     return x+1, x+2
+
+   z,w = f(7)
+
+
+duck typing is how we can use str() with many possible input types
+
+
+File I/O
+
+with statement:
+
+syntax:
+
+   with expr as variableName:
+      block of code
+
+
+with open('test.txt', 'r') as theFile:
+   print(theFile.read())
+
+when the with statement exits the block of code, it closes the file pointed to by theFile.
+
+The scope of the variable theFile is just the block of code
+
+Everything here will be inside a with block:
+
+   theFile.read() # reads the entire contents of a file into a string
+   theFile.readlines() # returns a list of the lines of a file
+   
+Files have duck typing for iteration:
+
+   with open('test.txt', 'r') as theFile:
+      for line in theFile:
+         print(line.strip())
+
+open(filename, str) opens a file with certain permissions
+
+open(filename, 'r') opens just for reading
+open(filename, 'w') opens for writing, deletes the file if it exists, or creates a new file if it doesn't exist
+open(filename, 'a') opens a file for appending (does not delete)
+
+
+example of writing to a file:
+
+with open('test2.txt', 'w') as theFile:
+   theFile.write(str)
+
+
+L = [1,2,3,4,5]
+with open('test2.txt', 'w') as theFile:
+   for x in L:
+      theFile.write("%d\n" % x)
+
+str(x) + '\n'
+
+theFile.write(str(x))
+theFile.write('\n')
+
+using multiple format specifiers
+"%d %s: %.2f" % (7, 'hello', q)
+

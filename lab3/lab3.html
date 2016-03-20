@@ -1,0 +1,95 @@
+<html>
+<head><title>Lab 3</title>
+<link rel="stylesheet" type="text/css" href="../lab-style.css">
+</head>
+<body>
+
+<div style="width: 700px; margin-left: 100px;">
+   <h1> Lab 3 </h1>
+   <h2> Overview </h2> 
+
+   <p>In this lab we will practice using the design recipe to break a complicated program
+into easier parts. We will only need to know two basic number theory definitions:</p>
+
+   <ul> 
+      <li>A <em>prime number</em> is a postive integer at least two which is divisible
+         only by 1 and itself.</li> 
+      <li>A <em>palindrome</em> is a positive integer whose digits
+         are the same when read left-to-right as right-to-left.</li>
+   </ul>
+   
+   <p>The goal of this lab is to produce a list of numbers which are both primes and
+palindromes.  All of the work in this lab will be contained in a single file called
+<span>lab3.py</span>.</p>
+
+   <h2>Testing</h2>
+   <p>As we saw before, I've provided a module called <a
+href="unittest.py">unittest.py</a> which will allow you to write automated tests for your
+program. Let's recall how to use it here.</p>
+
+   <p>To download a copy of the file for your own use, simply run the terminal command:</p>
+
+   <pre>
+      $ wget http://math.uic.edu/~jkun2/SPS/unittest.py
+   </pre>
+   
+   <p>This will download the file at the given location to the current directory.</p>
+
+   <p>unittest.py includes a single function called "test" which accepts as input two
+arguments (of any type). The first argument is the "expected" value of a function's
+output, and the second argument is the "actual" value. The function raises an error if
+the two arguments are not equal, and otherwise does nothing.</p>
+
+   <p>To access the unittest module from within a python program, use import:</p>
+
+   <pre>
+      from unittest import test
+   </pre>
+
+   <p>For example, here is how one might test the square function</p>
+
+   <pre>
+      from unittest import test
+   
+      # square: number -> number
+      # return the square of the input number.
+      def square(x):
+         return x * x
+
+      test(4, square(2))
+      test(1, square(-1))
+      test(100, square(10))
+   </pre>
+
+   <p>As per the design recipe, the proper way to develop your code is to write tests
+<em>first</em> so that you are complete sure about what the function is supposed to do,
+and then fill in the body. This way, you can "test as you go," and ensure that the easier
+tests pass before attempting to make the harder ones pass. If you make changes to
+something later, all you need to do is run your program and make sure no tests fail, and
+you can be reasonably confident your change did not break anything.</p>
+
+   <h2>Implementation</h2>
+   <p>There is only one required function for this lab, but the right way to go about
+implementing it is to break the problem into simpler parts, and write functions to solve
+the simpler parts. In the first two labs I did this for you, and now it's your
+turn to do so. I strongly recommend using the design recipe on every function
+you decide to create.</p>
+
+   <h3>palindromePrimesBelow: int -> [int]</h3>
+   <p>Define a function which accepts as input an integer and produces as output a list
+of primes less than the input integer which are also palindromes. </p>
+
+
+<h2> Submission </h2>
+   <p>In order to submit, make sure your program is in a single file named
+<span>lab3.py</span> and that your terminal is in the same directory as the
+file (when you run the <span>ls</span> program you should see the file listed).
+Then run the following terminal command:</p>
+
+   <pre>
+      $ submit lab3 lab3.py
+   </pre>
+
+</div>
+</body>
+</html>

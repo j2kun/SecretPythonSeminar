@@ -1,0 +1,125 @@
+<html>
+<head><title>Lab 6</title>
+<link rel="stylesheet" type="text/css" href="../lab-style.css">
+</head>
+<body>
+
+<div style="width: 700px; margin-left: 100px;">
+   <h1> Lab 6 </h1>
+   <h2> Overview </h2> 
+
+   <p>In this lab we will learn to work with iterators, generators, and exceptions.</p>
+
+   <h2>Warm up</h2>
+   <p>The functions implemented in this section should be submitted in a file
+called <span>generators.py</span></p>
+
+   <h3>catBetweenOdds: None -> iterable</h3>
+   <p>Define a generator called <span>catBetweenOdds</span>, which accepts no
+inputs, and produces a generator (using <span>yield</span>) which alternates
+producing odd numbers in order and producing the string 'cat'. E.g. the
+iterator starts:</p>
+
+   <pre>1, 'cat', 3, 'cat', 5, 'cat', ...</pre> 
+
+   <h3>subsequentPairs: iterable -> iterable</h3>
+   <p>Define a generator called <span>subsequentPairs</span>, which accepts as
+input an iterable, and generates (using <span>yield</span>) a sequence of
+subsequent pairs of the elements of the input iterable. That is, given the
+iterable starting with</p> 
+
+   <pre>2,4,6,8,10,12,...</pre>
+
+   <p><span>subsequentPairs</span> would produce an iterable starting as follows:</p>
+
+   <pre>(2,4), (4,6), (4,6), (8,10), ...</pre>
+
+
+   <h3>warnZeroDivision: function -> string</h3>
+   <p>Define a function called <span>warnZeroDivision</span>, which accepts
+as input a function <span>f</span> and produces as output a string. The
+function <span>f</span> accepts no arguments as input and produces a string as
+output. Your function <span>warnZeroDivision</span> should try to call
+<span>f</span>. In the event that <span>f</span> raises a
+<span>ZeroDivisionError</span>, your function should return the string
+<span>"See me after class!"</span>, otherwise it should return the output of
+<span>f</span></p>
+
+
+   <h2>Look-and-say sequences</h2>
+   <p>In a file called <span>lookandsay.py</span> define a class called
+<span>LookAndSaySequence</span> representing a "look-and-say" sequence.</p>
+
+   <p>Look-and-say sequences are defined by elaborating the following example, which is a look-and-say sequence starting at 1</p>
+
+   <pre>1, 11, 21, 1211, 111221, 312211, ...</pre>
+
+   <p>Spoken out loud, this sequence is "one; one one; two one; one two, two
+one; one one, one two, two one; ..." That is, the first number in the sequence
+is one, and to get the second we look at the first, see a single one, say "one
+one" out loud, and then use what we said to write down the next number in the
+sequence, "11." To get the third entry, we look at the second entry (11), say,
+"two one," and write down "21." For the fourth, we see one two followed by one
+one, so "one two, one one" which gives "1211." Etc. </p>
+
+   <h3>__init__: [float] -> Vector</h3> 
+
+   <p>Your constructor for a <span>LookAndSaySequence</span> should accept as
+input a single integer corresponding to the first integer of the sequence. This
+number may be any positive integer. If it is not an integer at all, your
+constructor should raise a <span>TypeError</span>, and if it is a negative
+integer, your constructor should raise an <span>Exception</span> with the
+message <span>"Starting value must be a positive integer"</span>.</p>
+
+   
+   <h3>__iter__, __next__</h3>
+   
+   <p>An instance of <span>LookAndSaySequence</span> should be an iterator. In
+particular, it must implement the <span>__iter__</span> and
+<span>__next__</span> methods.  The <span>__iter__</span> method should simply
+<span>return self</span>, and the <span>__next__</span> method should allow one
+to iterate through the LookAndSaySequence in order. That is, if I iterate over
+a <span>LookAndSaySequence(1)</span> and print each entry, I should see the
+following (infinite) output:</p>
+
+   <pre>
+      1
+      11
+      21
+      1211
+      111221
+      ...
+   </pre>
+
+   <p>The only restriction is that the output of next() must be an int. You
+have control over how else to implement your <span>LookAndSaySequence</span>
+class. In particular, you may use any of python's built-in functions or
+libraries to help you. Though you may find some of these functions useful, rest
+assured that you have all the tools you need to solve this problem "from
+scratch."</p>
+
+   <h2>Fun Math Thing!</h2>
+
+   <p>Look-and-say sequences seem very wild and unpredictable, don't they?
+Obviously these sequences grow very quickly, but how quickly? If the
+look-and-say sequence starts with 1, what can you reasonably conjecture about
+how fast the number of digits of the terms of this sequence grows? That is, if
+<span>a_i</span> is the number of digits in the <span>i</span>-th term, does
+<span>a_i</span> grow like a polynomial? An exponential? Something else? Does
+<span>a_{i+1} / a_i</span> converge? (You can conjecture an answer to this
+question with the funtions you wrote in this lab)</p>
+
+   <p>Does the answer to this question seem to depend on the start of the
+sequence? Are there any trivial sequences you'd like to exclude from
+consideration?</p>
+   
+<h2> Submission </h2> <p>In order to submit, run the following terminal
+command:</p>
+
+   <pre>
+      $ submit lab6 lookandsay.py generators.py 
+   </pre>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<html>
+<head><title>Lab 5</title>
+<link rel="stylesheet" type="text/css" href="../lab-style.css">
+</head>
+<body>
+
+<div style="width: 700px; margin-left: 100px;">
+   <h1> Lab 5 </h1>
+   <h2> Overview </h2> 
+
+   <p>In this lab we will learn to work with modules, objects, and learn to
+read through the python documetation to get information about built-in python
+functions.</p>
+
+   <h2>Modules</h2>
+   <p>The functions implemented in this section should be submitted in a file
+called <span>modules.py</span></p>
+
+   <h3>randomSplit: [a] -> set(a), set(a)</h3>
+   <p>Define a function which accepts as input a list and produces as output
+a tuple containing two sets. The first set is a random subset of half (rounded
+down) of the entries of the input list, and the second set is the remaining
+half. This function should not mutate the input list. This function should work
+properly even when the input list is empty.</p>
+   
+   <p>To implement this function, use the <span>random</span> module which is
+built in to python.</p>
+
+   <h3>weekdayAsString: datetime -> string</h3>
+   <p>Using the <span>datetime</span> module built into python, define a
+function called <span>weekdayAsString</span> which accepts as input a datetime
+object and produces as output the day of the week corresponding to that date.
+That is, the output should be a string which is one of the following:
+<span>["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
+"Saturday"]</span>.</p>
+
+
+   <h3>subsetSum: [int], int -> boolean</h3>
+   <p>Using the <span>itertools</span> module built into python, define a
+function called <span>subsetSum</span> which accepts as input a list of ints
+and a target int, and returns True if and only if there is a nonempty sub-list
+of the input integers which sums to the target. For example
+<span>subsetSum([1,1,3,5,7], 2)</span> is True. Note: do not test this on large
+input lists, because if P is different from NP then your program will
+definitely be slow.</p>
+
+
+   <h2>Dog</h2>
+
+   <p>Write a class called <span>Dog</span> representing a dog with the
+following methods.</p>
+
+   <h3>__init__: float, datetime -> Dog</h3>
+   <p>The constructor for a Dog should accept as input a float representing the
+Dog's weight and a datetime representing the Dog's birthday. A successfuly
+created Dog has an attribute called <span>weight</span> containing the Dog's
+current weight. You also need to keep track of the birthday as an attribute,
+but I don't require you to give it a specific name.</p>
+
+   <h3>speak: Dog -> string</h3>
+   <p>Define a method on Dogs called <span>speak</span> which accepts no inputs
+(except the context object) and returns as output the string
+<span>"Woof!"</span>.</p>
+
+   <h3>age: Dog, datetime -> int</h3>
+   <p>Define a method on Dogs called <span>age</span> which accepts as input a
+datetime (representing the current date and time, although it can be any
+datetime object), and produces as output an int representing the Dog's age (in
+human years).</p>
+
+   <h3>eat: Dog, float -> None</h3>
+   <p>Define a method on Dogs called <span>eat</span>, which accepts as input a
+floating point number representing the weight of food being fed to the Dog. The
+method produces no output, but instead changes the value of the Dog's weight
+attribute by adding the input weight to the total weight.</p>
+
+
+   <h2>Vector</h2>
+   <p>Write a class called <span>Vector</span> representing a vector with the
+following methods.</p>
+
+   <h3>__init__: [float] -> Vector</h3>
+   <p>The constructor for a Vector should accept as input a list of floats representing the
+coordinates of the vector. Vectors have an attribute called <span>coords</span>
+containing a list of the Vector's coordinates.</p>
+
+   <h3>__len__: Vector -> int</h3>
+   <p>Override the <span>__len__</span> method on Vectors, which allows the
+user of the Vector class to call <span>len(v)</span> on a Vector
+<span>v</span>. This method should return the dimension of the Vector.</p>
+
+   <h3>__eq__: Vector, Vector -> boolean</h3>
+   <p>Override the <span>__eq__</span> method on Vectors, which allows the
+user of the Vector class to call <span>v == w</span> on two Vectors
+<span>v,w</span>. This method should return True if and only if all the entries
+of the two Vectors are the same. This method should not assume the two Vectors
+have the same dimension. Ignore issues of floating point precision.</p>
+
+   <h3>__add__: Vector, Vector -> Vector</h3>
+   <p>Override the <span>__add__</span> method on Vectors, which allows the
+user of the Vector class to call <span>v + w</span> on two Vectors
+<span>v, w</span>. This method should return the Vector represeting the
+coordinate-wise sum of each input vector.</p>
+   
+   <h3>scale: Vector, float -> Vector</h3>
+   <p>Define a method <span>scale</span> on Vectors, which accepts as input a
+float (and the context object) and produces as output a new Vector whose
+coordinates are the coordinates of the context vector scaled by the given
+float. E.g. <span>Vector([1,2,3]).scale(7) == Vector(7,14,21)</span></p>
+
+   <h3>projectivelyEquivalent: Vector, Vector -> boolean</h3>
+   <p>Define a method <span>projectivelyEquivalent</span> on Vectors, which
+accepts as input the context Vector and a second vector, and outputs True if
+and only if the two vectors are projectively equivalent. Two nonzero
+Vectors <span>v,w</span> are called "projectively equivalent" if there is a
+nonzero real number <span>c</span> such that <span>v.scale(c) == w</span>. If
+either of the two Vectors is the zero Vector, return False. Ignore issues that
+would arise from floating point numbers being inexact.</p>
+   
+   <h2>Extra credit</h2>
+   <p>Look up on the internet how to use python's <span>smtplib</span> library
+to send me an email via Gmail. Test the program by sending yourself email
+first :)</p>
+
+
+<h2> Submission </h2>
+   <p>In order to submit, run the following terminal command:</p>
+
+   <pre>
+      $ submit lab5 modules.py dog.py vector.py 
+   </pre>
+
+</div>
+</body>
+</html>

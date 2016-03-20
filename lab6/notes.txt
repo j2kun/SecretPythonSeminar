@@ -1,0 +1,60 @@
+
+exceptions
+
+An exception is an "error," but generally it is a way to halt a program
+from the inside out.
+
+syntax: 
+
+try:
+   block of code that may raise an Exception
+except ExceptionType as varName:
+   block of code
+except ZeroDivisionError as blah:
+   block of code
+except...
+
+
+Giving an input argument to the Exception class allows you to pass
+information up the call stack by raising an exception.
+
+
+iterators 
+
+iter(object)
+
+an iterable is anything which, when you call iter(object)
+you get an object that has a __next__ method, which either returns things or raises StopIteration
+
+example: Squares class with custom iterator
+         Vector class (just call iter on some attribute)
+
+
+defining an iterator via a single function (generator)
+
+example: primes (infinite list)
+         
+
+
+functions as arguments
+
+def f(x):
+   return x+7
+
+def blah(g, x):
+   return g(x)
+
+
+blah(f, 9)
+
+otherBlah = blah
+
+
+blah((lambda x: x+7), 9)
+
+example
+L = ['Jeremy', 'Erin', 'Daniel', 'DDddd']
+max(L, key=lambda name: ord(name[-1]))
+
+
+

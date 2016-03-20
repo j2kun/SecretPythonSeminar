@@ -1,0 +1,70 @@
+Topics:
+
+Design recipe (unit tests)
+if/elif/else
+basic lists
+for loops
+
+
+Design recipe
+
+Function header: a simple comment explaining what the function does and the types of the inputs and outputs
+
+Function prototype: create an empty shell of a function
+
+Tests: implement some tests of functionality
+
+Fill in function body: implement the function, and ensure it passes all tests 
+
+
+
+new language form: if/elif/else
+
+if expr:
+   block
+else:
+   block
+
+if expr:
+   block
+elif expr:
+   block
+elif expr:
+   block
+...
+else:
+   block
+
+
+
+new data type: list e.g. [int]
+
+creating lists as expressions: [1,2,3,4]
+compute length: len(myList)
++ concatenates two lists
+listA.append(245) adds the number 245 to the end of listA
+
+
+for loop: syntax form for repeating tasks on a list of data
+
+for varName in expr:
+   block
+
+expr[expr]     access a specific part of a container
+e.g. list[i]  return the ith entry of a list (indexing from 0)
+
+>>> listA[0] = 99
+>>> listA
+[99, 2, 3, 4, 5]
+
+
+[] is an empty list
+
+
+
+new syntax form:
+
+while expr:
+   block
+
+

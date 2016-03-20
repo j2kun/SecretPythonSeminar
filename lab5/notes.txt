@@ -1,0 +1,98 @@
+topics:
+
+modules
+compound data types (abstract)
+objects
+
+references to mutable types
+copying lists/dicts/sets
+is versus ==
+
+using existing modules
+modules:
+   random
+   itertools
+   statistics
+   datetime
+   os
+
+
+Import statements:
+
+syntax: import name
+'name' refers to a python file whose name is 'name.py'
+
+when python encounters an import statement it does:
+
+ - Find the file
+ - Run all code in that file
+ - Creates a new 'module' object
+ - Assigns any defined variables and functions as attributes of that object
+
+when you do an import, you have to prefix all attribute names with a dot
+
+blah.hello(7)
+blah.myName
+
+sytnax: from blah import myName
+        from blah import *
+
+
+A compound data type is a data type with more than one data type.
+
+I want a datatype for a Facebook profile
+
+I want a Facebook profile to consist of:
+   Name (string)
+   Friends (list of Facebook profiles)
+   Age (int)
+   Birthday (date)
+
+profile.name
+profile.age
+profile.birthday
+
+profile.findSingleFriends()
+
+
+The python method for doing this is called a class
+
+syntax:
+
+class className:
+   block of code
+
+example (the bad way):
+
+class Profile:
+   pass
+
+
+constructor: Profile()
+this constructs a new instance of the class
+
+
+the good way override the constructor to require inputs
+
+class Profile:
+   def __init__(self, theName, myAge):
+      self.name = theName
+      self.age = myAge
+
+   def growOlder(self):
+      self.age += 1
+
+
+class methods can override default python functionality
+
+class SuperList:
+   def __init__(self):
+      pass
+
+   def __len__(self):
+      return 7
+
+I want people to be able to say len(mySuperList)_
+
+
+One really nice thing to override (for debugging) repr
