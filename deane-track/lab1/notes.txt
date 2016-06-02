@@ -1,0 +1,72 @@
+linux commands
+
+ls: list files
+mkdir: makes a new directory
+cd: change directory (cd .. goes up, cd with no arguments takes you home)
+pwd: present working directory (where am I?)
+rmdir: remove an empty directory
+rm: remove a text file (very dangerous cannot undo!)
+rm -r: recursively remove a directory
+
+vim filename: open or create a file with the name filename
+
+vim commands: 
+   :q    quit
+   :w    save
+   :wq   save and quit
+   i     change to insert mode
+   ESC   change to command mode (or cancel a command)
+
+python -i file.py    load a python program into the python REPL
+
+
+
+PYTHON NOTES:
+
+expression vs. statement
+
+List of types:
+   int
+   floating point numbers
+   string
+   boolean = True or False
+
+
+List of expressions:
+
+   <number>
+   '<string>'
+   "<string>"
+   EXPR + EXPR
+   EXPR - EXPR
+   EXPR * EXPR
+   EXPR / EXPR
+   (EXPR)
+   EXPR ** EXPR
+   EXPR and EXPR
+   EXPR or EXPR
+   not EXPR
+   EXPR < EXPR
+   EXPR <= EXPR
+   EXPR > EXPR
+   EXPR >= EXPR
+   EXPR == EXPR (test for equality)
+   EXPR != EXPR (not equal)
+
+list of statements:
+
+   EXPR
+   def functionName(args):
+      function body
+
+   # any text (is completely ignored)
+   return EXPR
+
+   variableName = EXPR
+
+   if EXPR:
+      block of code
+   else:
+      block of code
+
+Syntax versus semantics: syntax is like grammar, semantics is like the actual meaning of a sentence.

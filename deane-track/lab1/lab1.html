@@ -1,0 +1,137 @@
+<html>
+<head><title>Lab 1</title>
+<link rel="stylesheet" type="text/css" href=".lab-style.css">
+</head>
+<body>
+
+<div style="width: 700px; margin-left: 100px;">
+   <h1> Lab 1 </h1>
+   <h2> Overview </h2> 
+   <p>In this lab we will practice the basics of functions, arithmetic, and
+variables, and learn to work on the terminal. All of our work this lab will be
+done within a single file called <span>lab1.py</span>.</p>
+
+   <p>From now on, when I describe the behavior of a function I will use the
+notation <span>functionName: type -&gt; type</span> to specify what the
+appropriate input type and output type of the function should be. This is
+called a function's <em>type signature</em>. If I say that a function has the
+signature <span>f: number -&gt; number</span>, then it is called "f", it
+accepts as input a single number, and produces as output a single number. </p>
+
+   <p>While developing your code, it's important to test it to make sure it
+works properly. One simple way to do this (and we will learn more complex ways
+to do this) is to run your file through the python REPL. If your file is called
+<span>lab1.py</span>, then you would do this as follows: </p>
+   <pre>
+      $ python -i lab1.py
+   </pre>
+
+   <p>This does the same thing as clicking the "Run module" button in IDLE;
+it first runs your program, and then gives you access to all of the functions
+and variables you defined in the REPL. You can proceed to test your function on
+various inputs and outputs there. When you're done, typing Ctrl+D exits the
+REPL and returns to the terminal.</p>
+
+   <p>All of the following functions should be defined within a file called
+<span>lab1.py</span></p> 
+
+   <h2>Single-argument functions</h2>
+
+   <h3>square: number -&gt; number</h3>
+   <p>Define a function called <span>square</span> which accepts as input a
+single number and returns as output the square of that number. </p>
+
+   <h3>greet: string -&gt; string</h3>
+   <p>Define a function called <span>greet</span> which accepts as input a
+string (containing a name) and returns a <em>new</em> string containing "Hello,
+" followed by whatever the name is.</p>
+
+   <p>In order to accomplish this, we need to know more about strings. The
+operation we're describing is called <em>concatenation,</em> and it is denoted
+by the + symbol. That is, the expression <span>"a" + "b"</span> evaluates to
+<span>"ab"</span>. Whenever you encounter a new feature in Python, I highly
+reccommend you experiment with it in the REPL before using it in your programs.
+</p>  
+
+   <h3>triangleArea: number -&gt; number</h3>
+   <p>Define a function called <span>triangleArea</span> which accepts as input
+a number representing the length of the base of a triangle. We will fix the
+height of this triangle to be 8. The function <span>triangleArea</span> should
+return the area of this triangle. </p>
+
+   <h2>Multiple-argument functions</h2>
+   <p>In this section we will learn more about function arguments. In
+particular, when you define a function you may give any number of arguments,
+including zero. Here are some simple examples of functions with varying numbers
+of arguments. </p>
+
+   <pre>
+      # zero arguments
+      def seven():
+         return 7
+
+      # three arguments
+      def sumOfThree(x, y, z):
+         return x + y + z
+
+      # four arguments:
+      def hypercubeVolume(l1, l2, l3, l4):
+         return l1 * l2 * l3 * l4
+   </pre>
+
+   <p>In particular, an <em>argument list</em> is a new kind of language form
+that has the following syntax:</p>
+   <ul>
+      <li>An argument list may be empty, denoted by not typing anything</li>
+      <li>If an argument list is nonempty, then it is a comma-delimited list of
+variable names</li>
+   </ul>
+
+   <p>The semantics of argument lists is that they are <em>ordered</em>. That is,
+the order in which you specify argument values when you call a function is the same as
+how they are assigned to the list of argument variable names. Here is an
+example:</p>
+
+   <pre>
+      def printThree(aString, anotherString, aThirdString):
+         print(aString)
+         print(anotherString)
+         print(aThirdString)
+
+      printThree("a", "b", "c")
+      printThree("b", "c", "z")
+   </pre>
+
+   <p>In the first function call, the strings "a", "b", "c" are printed out in
+that order. That is, the variable <span>aString</span> refers to the string
+<span>"a"</span> in the first function call, <span>anotherString</span> to
+<span>"b"</span> and <span>aThirdString</span> to <span>"c"</span>. In the
+second function call, however, the variables refer to different values. Be sure
+you can identify which variables correspond to which values.</p>
+
+   <p>As a minor note, our type signatures will change to allow for multiple
+variables. That is, as you can see in the next heading below, commas will
+delimit the types of mulitple input arguments, so the example below is a
+function which accepts as input <em>three</em> numbers and returns a number.
+</p>
+ 
+<h2> Submission </h2>
+   <p>In order to submit, make sure your program is in a single file named
+<span>lab1.py</span> and that your terminal is in the same directory as the
+file (when you run the <span>ls</span> program you should see the file listed).
+Then run the following terminal command:</p>
+
+   <pre>
+      $ submit lab1 lab1.py
+   </pre>
+
+   <p>Just to clarify, the <span>$</span> represents your terminal prompt, so
+you shouldn't type that part (it's just there to say that this is a terminal
+command). The name of the program is <span>submit</span>, the first argument is
+the string <span>lab1</span>, which is the name of the lab, and the second
+argument, <span>lab1.py</span>, is the location of the file you want to submit.
+Note that it must be named lab1.py or my grading robot won't grade it.</p>
+
+</div>
+</body>
+</html>
